@@ -1,0 +1,23 @@
+{
+	options: {
+		fooext: {
+			__type: "Ext.Panel",
+			title: "foobarbla",
+			layout: "accordion",
+			layoutConfig: {
+			},
+			items: [{
+				title: "nr one",
+				html: "<p>foo <b>bla</b> #1</p>"
+			}, {
+				title: "nr two",
+				html: "<p>foo <b>bla</b> #2</p>"
+			}, {
+				title: "nr three",
+				html: "<p>foo <b>bla</b> #3</p>"
+			}]
+		}
+	},
+	controls: [
+	]
+}

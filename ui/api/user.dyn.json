@@ -1,0 +1,14 @@
+<%!
+from core import gfx
+%>
+{
+% if Session.Database:
+	$title: "res:wait",
+	pollUrl: "/api/core.dyn.json"
+% else:
+	title: "${ _('welcome', _.HostName) }",
+	controls: [
+		${ _.Control(None, 'face/UserPrompt', 'userPrompt').ToJson() }
+	]
+% endif
+}

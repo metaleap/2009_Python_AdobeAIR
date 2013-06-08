@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="metaleap_air" default="build_air" basedir="../air">
+	<property name="SDK_HOME" value="/Users/roxor/Programs/airsdk"/>
+	<property name="ADL" value="${SDK_HOME}/bin/adl"/>
+	<property name="ADT.JAR" value="${SDK_HOME}/lib/adt.jar"/>
+	<property name="APP_NAME" value="MetaLeap"/>
+	<property name="APP_ROOT" value="."/>
+	<property name="APP_DESCRIPTOR" value="${APP_ROOT}/${APP_NAME}-app.xml"/>
+	<property name="AIR_NAME" value="${APP_NAME}.air"/>
+	<property name="STORETYPE" value="pkcs12"/>
+	<property name="KEYSTORE" value="${APP_ROOT}/${APP_NAME}.p12"/>
+	<target name="build_air">
+		<java jar="${ADT.JAR}" fork="true" failonerror="true">
+			<arg value="-package"/>
+			<arg value="-storepass"/>
+			<arg value="metaleap123"/>
+			<arg value="-storetype"/>
+			<arg value="${STORETYPE}"/>
+			<arg value="-tsa"/>
+			<arg value="none"/>
+			<arg value="-keystore"/>
+			<arg value="${KEYSTORE}"/>
+			<arg value="${AIR_NAME}"/>
+			<arg value="${APP_DESCRIPTOR}"/>
+			<arg value="${APP_NAME}.html"/>
+			<arg value="AIRAliases.js"/>
+			<arg value="AIRIntrospector.js"/>
+			<arg value="icon16.png"/>
+			<arg value="icon32.png"/>
+			<arg value="icon48.png"/>
+		</java>
+	</target>
+</project>

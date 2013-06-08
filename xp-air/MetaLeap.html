@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>MetaLeap</title>
+		<script type="text/javascript" language="JavaScript" src="AIRAliases.js"></script>
+		<script type="text/javascript" language="JavaScript" src="AIRIntrospector.js"></script>
+		<style type="text/css">
+		#air_fail_info {
+		background-color: InfoBackground; color: InfoText; border: solid 2px #334455; overflow: auto; padding: 16px 72px 16px 48px; position: absolute; top: 25%; bottom: 25%;
+		-moz-border-radius: 24px 0px 24px 0px; border-top-left-radius: 24px; -webkit-border-top-left-radius: 24px; -khtml-border-top-left-radius: 24px; border-bottom-right-radius: 24px; -webkit-border-bottom-right-radius: 24px; -khtml-border-bottom-right-radius: 24px;
+		}
+
+		body { font-family: FreeSans, Helvetica, Arial, sans-serif; font-size: 11px; overflow: hidden; margin: 0px; padding: 0px; }
+		#air_fail { position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: #666666; }
+		#air_fail_info ul li { padding: 0px 8px 16px 8px; }
+		h2 { color: #334455; }
+		#air_fail_info ul { padding-left: 0px; list-style: none; }
+		#air_fail_info ul li div { color: #334455; }
+		#air_fail_info ul li b { display: block; }
+		</style>
+		<script type="text/javascript" language="JavaScript">
+		var url = '';
+		var airMenu = ((air) ? (new air.NativeMenu()) : (null));
+
+		var airBridge = {
+			addMenuItem: function(caption, handler) {
+				airMenu.addItem(new air.NativeMenuItem(caption)).addEventListener(air.Event.SELECT, handler);
+			},
+
+			refreshPage: function(obj) {
+				if (document.title != obj.title)
+					document.title = obj.title;
+			},
+
+			resetMenu: function() {
+				if (airMenu)
+					while(airMenu.numItems > 0)
+						airMenu.removeItemAt(0);
+			},
+
+			setTitle: function(title) {
+				if (document.title != title)
+					document.title = title;
+			},
+
+			showMenu: function(event) {
+				airMenu.display(window.nativeWindow.stage, event.clientX, event.clientY);
+			}
+		};
+
+		function air_Bridge(iframe) {
+			iframe.contentWindow.parentSandboxBridge = airBridge;
+		}
+
+		function air_Load() {
+			try {
+				air.NativeApplication.nativeApplication.addEventListener(air.InvokeEvent.INVOKE, air_Invoke);
+			} catch(e) {
+				you_fail('nair');
+			}
+		}
+
+		function air_Invoke(inv) {
+			var port;
+
+			if ((inv.arguments != null) && (inv.arguments.length > 0) && ((port = inv.arguments.toString()).length > 0)) {
+				url = 'http://localhost:' + port + '/?spam_eggs=' + Math.random();
+				probe(url, 0);
+			} else
+				you_fail('port');
+		}
+
+		function probe(url, attempt) {
+			var request = new XMLHttpRequest(), iframe;
+
+			if(attempt > 250)
+				you_fail('conn');
+			else {
+				request.open("GET", url, true);
+				request.setRequestHeader("Content-Type", "application/x-javascript");
+				request.onreadystatechange = function() {
+					if (request.readyState == 4)
+						if (request.status == 200 && request.responseText && request.responseText == 'the_full_monthy') {
+							(iframe = document.getElementById('teh_iframez')).src = url.substr(0, url.indexOf('?'));
+							iframe.focus();
+						} else
+							probe(url, attempt + 1);
+				};
+				request.send(null);
+			}
+		}
+
+		function you_fail(reason)  {
+			var el;
+
+			document.getElementById('air_fail').style.display = 'block';
+			for (var i = 1; i <= 2; i++)
+				if ((el = document.getElementById('fail_' + reason + i)) != null)
+					el.style.display = 'block';
+		}
+
+		window.unload = function() {
+			air.NativeApplication.nativeApplication.removeEventListener(air.InvokeEvent.INVOKE, air_Invoke);
+		}
+		</script>
+	</head>
+	<body onload="air_Load();">
+		<noframes><div>MetaLeap Error: no IFRAME support!</div><hr size="1" noshade="noshade"/></noframes>
+		<noscript><div>MetaLeap Error: no JAVASCRIPT support!</div><hr size="1" noshade="noshade"/></noscript>
+		<iframe id="teh_iframez" ondominitialize="air_Bridge(this);" sandboxRoot="http://localhost/" documentRoot="app:/" width="100%" height="100%" style="border: none 0px red; margin: 0px; padding: 0px; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" src="about:blank"></iframe>
+		<div id="air_fail" style="display: block;">
+			<script type="text/javascript" language="JavaScript"><!-- //
+			document.getElementById('air_fail').style.display = 'none';
+			//--></script>
+			<div id="air_fail_info" style="float: left; left: 11%; right: 51%">
+				<h2>MetaLeap could not be started:</h2>
+				<hr size="1" noshade="noshade" />
+				<p>Problems of this particular kind should typically not occur at all when launching MetaLeap from the shortcut(s) created for you by MetaLeap setup.</p>
+				<p>If this is the case, however, please <a href="http://metaleap.net/" target="_blank">post your problem online</a> so we can sort this out for you quickly.</p>
+				<hr size="1" noshade="noshade" />
+				<ul>
+					<li id="fail_nair1" style="display: none;"><b>Adobe Integrated Runtime (AIR) not available:</b><div>Looks like you try to access MetaLeap from a web browser. This can be done, but doesn't work just by opening this web page.</div></li>
+					<li id="fail_port1" style="display: none;"><b>No port was specified:</b><div>The MetaLeap AIR executable expects a command line argument specifying the port to connect to MetaLeap Service. In a default setup, this is either port 54321 or 56789. Just launch MetaLeap from the default shortcut(s) and this will be done automatically.</div></li>
+					<li id="fail_conn1" style="display: none;"><b>Connection timed out:</b>
+						<div><strong>MetaLeap Service may not respond quickly enough:</strong> in this case, consider closing currently running, resource-intensive applications and restarting MetaLeap.</div>
+						<div><strong>MetaLeap Service connection may have been refused:</strong> If you have desktop security, anti-virus or firewall software running, be sure to permit TCP communication local to this computer over the ports 54321, 56789, 23456 and 65432.</div>
+					</li>
+					<noframes><li><b>No IFRAME support:</b><div>Looks like you try to access MetaLeap from a web browser. This can be done, but doesn't work just by opening this web page.</div></li></noframes>
+					<noscript><li><b>No JAVASCRIPT support:</b><div>Looks like you try to access MetaLeap from a web browser. This can be done, but doesn't work just by opening this web page, plus you will need to enable JavaScript.</div></li></noscript>
+				</ul>
+			</div>
+			<div id="air_fail_info" style="float: right; left: 51%; right: 11%;">
+				<h2>MetaLeap konnte nicht gestartet werden:</h2>
+				<hr size="1" noshade="noshade" />
+				<p>Probleme dieser Art sollten typischerweise gar nicht erst auftreten, solange MetaLeap &uuml;ber die w&auml;hrend der Installation angelegten Verkn&uuml;pfung(en) gestartet wird.</p>
+				<p>Ist dies jedoch dennoch der Fall, <a href="http://metaleap.net/" target="_blank">melden Sie Ihr Problem bitte online</a>, damit wir es schnell aus der Welt schaffen k&ouml;nnen.</p>
+				<hr size="1" noshade="noshade" />
+				<ul>
+					<li id="fail_nair2" style="display: none;"><b>Adobe Integrated Runtime (AIR) nicht verf&uuml;gbar:</b><div>Scheinbar versuchen Sie, auf MetaLeap mit einem Webbrowser zuzugreifen. Das ist machbar, funktioniert aber nicht, indem Sie nur diese Webseite &ouml;ffnen.</div></li>
+					<li id="fail_port2" style="display: none;"><b>Kein Port angegeben:</b><div>Die MetaLeap-AIR-Anwendung erwartet als Befehlszeilenargument eine Portnummer zur Verbindung mit dem MetaLeap-Dienst (standardm&auml;&szlig;ig 54321 oder 56789). Starten Sie MetaLeap &uuml;ber die Standardverkn&uuml;pfung(en) und die passende Portnummer wird im Hintergrund automatisch ermittelt und &uuml;bergeben.</div></li>
+					<li id="fail_conn2" style="display: none;"><b>Verbindungszeitlimit &uuml;berschritten:</b>
+						<div><strong>MetaLeap-Dienst reagiert m&ouml;glicherweise zu langsam:</strong> Beenden Sie in diesem Fall laufende, gegebenenfalls ressourcenintensive Anwendungen und starten Sie MetaLeap erneut.</div>
+						<div><strong>MetaLeap-Dienst akzeptiert m&ouml;glicherweise keine eingehenden lokalen Verbindungen:</strong> Falls auf Ihrem Computer Desktopsicherheits-, Antiviren- oder Firewallsoftware l&auml;uft, stellen Sie sicher, da&szlig; Programmen auf dem Computer die lokale TCP-Kommunikation &uuml;ber die Portnummern 54321, 56789, 23456 und 65432 erlaubt ist.</div>
+					</li>
+					<noframes><li><b>Keine IFRAME-Unterst&uuml;tzung:</b><div>Scheinbar versuchen Sie, auf MetaLeap mit einem Webbrowser zuzugreifen. Das ist machbar, funktioniert aber nicht, indem Sie nur diese Webseite &ouml;ffnen.</div></li></noframes>
+					<noscript><li><b>Keine JAVASCRIPT-Unterst&uuml;tzung:</b><div>Scheinbar versuchen Sie, auf MetaLeap mit einem Webbrowser zuzugreifen. Das ist machbar, funktioniert aber nicht, indem Sie nur diese Webseite &ouml;ffnen &mdash; und Sie sollten hierf&uuml;r JavaScript aktivieren.</div></li></noscript>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

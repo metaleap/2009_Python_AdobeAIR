@@ -1,0 +1,146 @@
+en de
+
+initappserver
+	~~ Initializing application server...
+	~~ Applikationsserver wird initialisiert...
+listening
+	~~ Application server is now up and running. Port: {0}...
+	~~ Der Anwendungsserver wurde gestartet. Port: {0}...
+bye
+	~~ See you around!
+	~~ Bis die Tage!
+wait
+	[ Just a moment... ]
+	[ Einen Augenblick... ]
+loading
+	Loading {0} more scripts... ({1}%)
+	Laden von {0} weiteren Skripten... ({1}%)
+url
+	URL
+	URL
+not_available
+	(Not available)
+	(Nicht verfügbar)
+error
+	Error
+	Fehler
+error_title
+	An error was encountered.
+	Ein Fehler ist aufgetreten.
+error_rc
+	Retry / Continue
+	Neu versuchen / Fortsetzen
+error_couch
+	No CouchDB database connection: {0}
+	Keine CouchDB-Datenbankverbindung: {0}
+error_sh
+	Show server response
+	Serverantwort einblenden
+error_status_404
+	A resource was not found.
+	Eine Ressource wurde nicht gefunden.
+error_status_200
+	Some of the JSON data returned by the server was invalid.
+	Ein Teil der vom Server zurückgegebenen JSON-Daten war ungültig.
+error_id_error
+	An unknown error occurred.
+	Ein unbekannter Fehler ist aufgetreten.
+error_id_type_notdefined
+	Failed to load type '{0}': the associated script was loaded successfully, but did not define the specified type '{0}' (or contained syntax errors).
+	Fehler beim Laden des Typs '{0}': das entsprechende Skript wurde erfolgreich geladen, hat den angegebenen Typ '{0}' aber nicht definiert (oder enthielt Syntaxfehler).
+error_id_type_notinheritable
+	Type '{0}' could not be defined because the specified base type '{1}' cannot be extended.
+	Der Typ '{0}' konnte nicht definiert werden, da der angegebene Basistyp '{1}' nicht erweitert werden kann.
+error_id_type_redefined
+	Type '{0}' could not be defined because a type with the same name has already been defined.
+	Der Typ '{0}' konnte nicht definiert werden, da bereits ein Typ mit demselben Namen definiert wurde.
+error_id_type_notfound
+	The '{0}' instance could not be initialized because the required associated source script could not be found.
+	Die '{0}'-Instanz konnte nicht initialisiert werden, da das entsprechende Quellskript nicht gefunden wurde.
+error_id_type_unknownbase
+	Type '{0}' could not be defined because the specified base type '{1}' has not been defined first.
+	Der Typ '{0}' konnte nicht definiert werden, da der angegebene Basistyp '{1}' nicht zuvor definiert wurde.
+error_id_invalid
+	Invalid '{1}' argument to '{0}': '{2}'
+	Ungültiges '{1}'-Argument wurde an '{0}' übergeben: '{2}'
+error_id_parsererror
+	The server response contained JSON syntax errors or referred to a syntactically erroneous script.
+	Die Serverantwort enthielt JSON-Syntaxfehler oder verwies auf ein syntaktisch fehlerhaftes Skript.
+error_id_notfound
+	The specified resource does not exist: '{0}'.
+	Die angegebene Ressource existiert nicht: '{0}'.
+error_id_servershutdown
+	The server is being shut down and doesn't accept any further requests. Please wait until the server has restarted.
+	Der Server wird heruntergefahren und erlaubt keine weiteren Anfragen. Bitte warten Sie, bis der Server neu gestartet wurde.
+error_id_unloaded
+	Your connection has been lost and cannot be resumed automatically at this time. If your network connection is up and running, reload this page.
+	Ihre Verbindung wurde unterbrochen und kann zur Zeit nicht automatisch wiederhergestellt werden. Sind Sie mit dem Netzwerk verbunden, laden Sie diese Seite erneut.
+unknown
+	(Unknown)
+	(Unbekannt)
+fail_nojs
+	Please enable JavaScript for {0}; then 'reload'.
+	Bitte aktivieren Sie JavaScript für {0}; dann 'Seite neu laden'.
+fail_nojs_url
+	~~ http://google.com/search?q=enable+javascript+{0}
+	~~ http://google.de/search?q=javascript+aktivieren+{0}
+fail_nojs_url_title
+	(See how)
+	(So geht's)
+fail00
+	[ No Connection ]
+	[ Keine Verbindung ]
+fail01
+	Your connection has been lost:
+	Ihre Verbindung wurde unterbrochen:
+fail02
+	Once your connection resumes, you may continue whatever you were doing, exactly where you were interrupted.
+	Sobald Ihre Verbindung wiederhergestellt wird, können Sie genau dort fortsetzen, wo Sie unterbrochen wurden.
+fail04
+	MetaLeap Service may not respond quickly enough:
+	MetaLeap-Dienst reagiert möglicherweise zu langsam:
+fail05
+	If this happens repeatedly, then maybe your computer is being slowed down by too many resource-hungry applications running at the same time.
+	Tritt dies häufiger auf, verlangsamen möglicherweise zuviele gleichzeitig laufende ressourcenintensive Anwendungen Ihren Computer.
+fail06
+	MetaLeap Service may have been stopped:
+	MetaLeap-Dienst wurde möglicherweise beendet:
+fail07
+	Have you accidentally stopped the MetaLeap Service process using 'Task Manager', 'System Monitor', 'Activity Monitor' or a similar tool? Then simply restart the application.
+	Haben Sie aus Versehen den MetaLeap-Dienstprozess über 'Task-Manager', 'System-Monitor', 'Aktivitäts-Anzeige' oder ein ähnliches Programm beendet? Dann starten Sie die Anwendung einfach neu.
+fail08
+	MetaLeap Service connection may have been refused:
+	MetaLeap-Dienst akzeptiert möglicherweise keine eingehenden lokalen Verbindungen:
+fail09
+	If you have desktop security (such as anti-virus or firewall) software running, make sure that local TCP/IP communication between programs on this computer over the ports {0} is permitted.
+	Falls auf Ihrem Computer Desktopsicherheitssoftware (z.B. Antivirus oder Firewall) läuft, stellen Sie sicher, dass lokale TCP/IP-Kommunikation über die Ports {0} zwischen Programmen auf diesem Computer erlaubt ist.
+fail10
+	Check your computer's network connectivity:
+	Überprüfen Sie die Netzwerk-Konnektivität Ihres Computers:
+fail11
+	If you cannot access other web sites or services either, your network connection may be down.
+	Wenn Sie auch auf andere Websites oder Dienste nicht zugreifen können, liegt das Problem bei Ihrer Netzwerkverbindung.
+fail12
+	(If you are connected to a mobile or wireless network, this might just be a temporary disruption.)
+	(Verwenden Sie ein mobiles oder drahtloses Netzwerk, kann es sich um eine vorübergehende Unterbrechung handeln.)
+fail13
+	The MetaLeap Server at '{0}' may not respond quickly enough:
+	Der MetaLeap-Server auf '{0}' reagiert möglicherweise zu langsam:
+fail14
+	In this case, your connection will be resumed shortly. If this happens repeatedly, alert an administrator responsible for '{0}'.
+	In diesem Fall baut sich die Verbindung in Kürze wieder auf. Tritt dies häufiger auf, weisen Sie einen für '{0}' zuständigen Administrator darauf hin.
+fail15
+	The MetaLeap Server at '{0}' may be down for maintenance:
+	Der MetaLeap-Server auf '{0}' wurde möglicherweise zu Wartungszwecken heruntergefahren:
+fail16
+	In this case, your connection will be resumed once the MetaLeap Server is back up.
+	In diesem Fall wird die Verbindung wieder hergestellt, sobald der MetaLeap-Server neu gestartet wurde.
+fail18
+	[ Reconnecting in {0} s... ]
+	[ Neuverbindung in {0} s... ]
+fail19
+	[ Attemtping to reconnect... ]
+	[ Erneuter Verbindungsversuch... ]
+welcome
+	Welcome to {0}!
+	Willkommen bei {0}!

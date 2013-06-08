@@ -1,0 +1,8 @@
+.face_UserPromptBox:
+	position: relative
+	width: 44%
+	left: 28%
+	top: 48px
+
+.face_UserPromptPanel:
+	height: 280px

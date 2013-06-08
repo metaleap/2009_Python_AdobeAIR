@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/1.0">
+	<id>com.roxority.MetaLeap</id>
+	<version>1.0</version>
+	<filename>MetaLeap</filename>
+	<name>roxority.com MetaLeap</name>
+	<description>
+		Communicate, collaborate, sync and share -- anything, on any platform, online or off. 
+	</description>
+	<installFolder>roxority.com</installFolder>
+	<programMenuFolder>roxority.com MetaLeap</programMenuFolder>
+	<copyright>Copyright (C) 2008-2009 roxority.com. All rights reserved.</copyright>
+	<initialWindow>
+		<content>MetaLeap.html</content>
+		<visible>true</visible>
+		<width>980</width>
+		<height>700</height>
+		<x>20</x>
+		<y>20</y>
+		<minSize>760 560</minSize>
+	</initialWindow>
+	<allowBrowserInvocation>false</allowBrowserInvocation>
+	<icon>
+		<image16x16>icon16.png</image16x16>
+		<image32x32>icon32.png</image32x32>
+		<image48x48>icon48.png</image48x48>
+	</icon>
+</application>

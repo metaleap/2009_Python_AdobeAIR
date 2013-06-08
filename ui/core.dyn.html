@@ -1,0 +1,116 @@
+<%page
+/><%!
+from core import gfx, util
+import random
+%><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head id="__head">
+		<title>${_('wait')}</title>
+		<style type="text/css">
+		body {
+			background-image: url('${_.DynGfx(gfx.Texturize, '/gfx/bg/bg' + str(random.randint(1, 15)) + '.jpg', ext = 'jpg' )}');
+		}
+		.preload-img {
+			position: absolute;
+			top: 100000px;
+			left: 100000px;
+		}
+		</style>
+		<link rel="stylesheet" type="text/css" href="${ _.GetCssUrl('/styles/core.ccss') }" />
+		<xlink rel="stylesheet" type="text/css" href="/base/_lib/extjs/resources/css/ext-all.css"/>
+		<script type="text/javascript" language="JavaScript" src="/base/_lib/${ _.IsDebugMode and 'jquery-1.3.2' or 'jquery-1.3.2.min' }.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/_lib/jquery.color.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/_lib/jquery.scrollTo.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/_lib/extjs/adapter/${ _.IsDebugMode and 'ext-jquery-adapter-debug' or 'ext-jquery-adapter' }.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/_lib/extjs/${ _.IsDebugMode and 'ext-all-debug' or 'ext-all' }.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/base.js"></script>
+		<script type="text/javascript" language="JavaScript" src="/base/metaleap/core.js"></script>
+% if _.AirMode:
+		<script type="text/javascript" language="JavaScript" src="/base/metaleap/air/mode.js"></script>
+% endif
+% if Request.IsAir:
+		<script type="text/javascript" language="JavaScript" src="/base/metaleap/air/client.js"></script>
+% endif
+		<script type="text/javascript" language="JavaScript" src="/cache/scripts/res_${Session and Session.PreferredLanguage or 'en'}.js"></script>
+		<script language="JavaScript" type="text/javascript">
+			Ext.BLANK_IMAGE_URL = '/base/_lib/extjs/resources/images/default/s.gif';
+
+			function __onPageBlur() {
+				$M.windowFocused = false;
+				$M.poll.deferring = true;
+			}
+
+			function __onPageError(msg, url, line) {
+				$M.clearBootTimeout();
+				$M.onError(null, null, { error: msg, pollurl: $M.poll.url, lastcontrolurl: $M.reflection.__.__lastControlUrl, line: line }, url, false);
+				return true;
+			}
+
+			function __onPageFocus() {
+				$M.poll.deferring = false;
+				$M.windowFocused = true;
+				$M.poll.lastResponseTime = $B.DateTime.Ticks();
+			}
+
+			function __onPageLoad() {
+				$J('.--preload-img').hide();
+				$J('#__error_info_debug_toggle')[0].checked = false; // otherwise, if this is checked just before you do a simple F5 refresh, it might be re-checked by the browser without firing onclick
+			}
+
+			$M.debug = ${ _.IsDebugMode and 'true' or 'false' };
+		</script>
+		<link rel="shortcut icon" id="__icon" type="image/png" href="/gfx/icon32.png" />
+	</head>
+	<body id="__body" onfocus="__onPageFocus();" onblur="__onPageBlur();" onload="__onPageLoad();" onerror="return __onPageError(arguments[0], arguments[1], arguments[2]);">
+		<div id="__loader" class="rox-overlay --preload-bg" style="display: none; background-image: url('${ _.DynGfx(gfx.Color, (0, 0, 0, 0.8)) }');">
+			<div id="__loader_info" class="rox-overlay-box rox-boxshadow rox-maxheight --preload-bg" style="background-image: url('${ _.DynGfx(gfx.Alpha, 'gfx/bg_02.png', 0.6, 0.5, 0.5, 0.5) }');">
+				<div>
+					<h2><span></span><div>${_('fail01')}</div></h2>
+					<p>${_('fail02')}</p>
+					<ul class="--preload-bg rox-overlay-box-inner rox-autoscroll" style="background-image: url('${ _.DynGfx(gfx.Alpha, 'gfx/bg_03.png', 0.5) }');">
+% if _.AirMode:
+						<li><b>${_('fail04')}</b><div>${_('fail05')}</div></li>
+						<li><b>${_('fail06')}</b><div>${_('fail07')}</div></li>
+						<li><b>${_('fail08')}</b><div>${_('fail09', str(_.DefaultPorts)[1:-1])}</div></li>
+% else:
+						<li><b>${_('fail10')}</b><div>${_('fail11')}</div><div>${_('fail12')}</div></li>
+						<li><b>${_('fail13', _.HostName)}</b><div>${_('fail14', _.HostName)}</div></li>
+						<li><b>${_('fail15', _.HostName)}</b><div>${_('fail16')}</div></li>
+% endif
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="__error" class="rox-overlay --preload-bg" style="display: none; background-image: url('${ _.DynGfx(gfx.Color, (0, 0, 0, 0.8)) }');">
+			<div id="__error_info" class="rox-overlay-box rox-boxshadow rox-maxheight --preload-bg" style="background-image: url('${ _.DynGfx(gfx.Alpha, 'gfx/bg_02.png', 0.6, 0.5, 0.5, 0.5) }');">
+				<div>
+					<h2><span>
+						<div id="__error_info_debug_toggle_controls" style="display: inline-block;"><input type="checkbox" id="__error_info_debug_toggle" onclick="$M.onErrorShowServerResponse();" /><label for="__error_info_debug_toggle">${_('error_sh')}</label></div>
+						<button onclick="$M.recoverFromError();" class="--preload-bg" style="display: inline;">${_('error_rc')}</button>
+					</span><div>${_('error_title')}</div></h2>
+					<ul class="--preload-bg rox-overlay-box-inner rox-autoscroll" style="background-image: url('${ _.DynGfx(gfx.Alpha, 'gfx/bg_03.png', 0.5) }');">
+						<li id="__error_info_status"></li>
+						<li id="__error_info_textstatus"></li>
+						<li id="__error_info_url"></li>
+					</ul>
+					<div style="display: none;" id="__error_info_debug"></div>
+				</div>
+			</div>
+		</div>
+		<div id="__scriptloader" class="rox-boxshadow" style="position: absolute; top: -1.8em;"></div>
+		<span style="display: none;">
+			<img src="${ _.DynGfx(gfx.Alpha, 'gfx/bg_02.png', 0.6, 0.5, 0.5, 0.5) }" class="--preload-img" style="display: inline;" onload="this.style.display='none';" />
+			<img src="${ _.DynGfx(gfx.Alpha, 'gfx/bg_03.png', 0.5) }" class="--preload-img" style="display: inline;" onload="this.style.display='none';" />
+			<img src="${ _.DynGfx(gfx.Color, (0, 0, 0, 0.8)) }" class="--preload-img" style="display: inline;" onload="this.style.display='none';" />
+			<img src="${ _.DynGfx(gfx.Color, (1, 1, 0.8, 0.85)) }" class="--preload-img" style="display: inline;" onload="this.style.display='none';" />
+		</span>
+		<noscript>
+			<div id="__error_nojs">
+				<div style="background-image: url('${ _.DynGfx(gfx.Color, [1, 1, 0.8, 0.85]) }');">
+					${_('fail_nojs', Request.user_agent.browser.title())}
+					<a target="_blank" href="${_('fail_nojs_url', Request.user_agent.browser.title())}">${_('fail_nojs_url_title')}</a>
+				</div>
+			</div>
+		</noscript>
+	</body>
+</html>

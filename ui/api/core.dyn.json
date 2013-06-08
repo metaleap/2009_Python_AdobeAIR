@@ -1,0 +1,13 @@
+<%!
+import random
+%>
+{
+% if not Session.Database:
+	$title: 'res:wait',
+	pollUrl: '/api/user.dyn.json'
+% else:
+	title: "${ Session.UserName }",
+	controls: [
+	]
+% endif
+}

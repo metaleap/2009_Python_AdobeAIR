@@ -1,0 +1,11 @@
+<%!
+import random, simplejson
+from core import util
+%><%
+	for k in Request.args:
+		if k and type(k) == str and k.endswith('.ccss'):
+			vpath = _.GetCssUrl(k)
+			if vpath:
+				raise util.RedirectError(vpath + '?r=' + str(random.random()))
+			break
+%>

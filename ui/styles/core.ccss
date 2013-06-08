@@ -1,0 +1,192 @@
+*, body, all:
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", FreeSans, "Helvetica Neue", Helvetica, Arial, sans-serif
+	text-overflow: ellipsis
+
+body:
+	background->
+		color: #fff
+	color: #000
+	font-size: 11px
+	margin: 0px
+	padding: 0px
+	font-size: 11px
+	line-height: 16px
+
+#__error_nojs:
+	position: absolute
+	top: 48px
+	left: 40%
+	text-align: center
+	width: 20%
+
+#__error_nojs div:
+	text-align: center
+	color: ButtonText
+	padding: 8px
+	$border-radius: 4 4 2 2
+	border: 1px solid #366
+
+#__error_nojs a:
+	color: #33c
+
+h1, h2, h3, h4, h5, h6:
+	margin: 0px
+	white-space: nowrap
+	overflow: hidden
+
+.rox-autoscroll:
+	overflow: auto
+
+.rox-boxshadow:
+	-webkit-box-shadow: #444444 0px 4px 48px
+	-moz-box-shadow: #444444 0px 4px 48px
+
+.rox-overlay:
+	background->
+		$image: Color [0, 0, 0, 0.8]
+	position: absolute
+	top: 0px
+	left: 0px
+	right: 0px
+	bottom: 0px
+
+.rox-overlay-box:
+	position: absolute
+	top: 4em
+	left: 20%
+	right: 20%
+	max-height: 85%
+	padding: 8px
+	background->
+		$image: Alpha "gfx/bg_02.png", 0.5, 0.5, 0.5, 0.5
+		repeat: repeat
+		position: left top
+	border->
+		color: #484848
+		style: solid
+		width: 1px
+	$border-radius: 8 8 4 4
+	min-width: 500px
+
+.rox-overlay-box h2:
+	color: #fff
+	height: 20px
+	padding: 4px 0px 8px 2px
+	margin-top: 0px
+	font-size: 18px
+	font-weight: normal
+
+.rox-overlay-box h2 div:
+	$shadow-top: #000000
+	padding: 0px 0px 0px 0px
+
+.rox-overlay-box h2 span:
+	display: inline-block
+	float: right
+	text-align: right
+	font-size: 10px
+
+.rox-overlay-box p, .rox-overlay-box h2 span span:
+	color: #aaaaaa
+	$shadow-top: #222222
+
+.rox-overlay-box p:
+	padding: 0px 8px 0px 16px
+
+.rox-overlay-box-inner, #__error_info_debug:
+	background->
+		$image: Alpha "gfx/bg_03.png", 0.6
+	$border-radius: 6 6 0 0
+	padding: 16px
+	list-style: none
+	margin: 0px
+
+.rox-overlay-box-inner:
+	border-top->
+		color: #aaaaaa
+		style: solid
+		width: 1px
+	border-bottom->
+		color: #666666
+		style: solid
+		width: 1px
+
+#__error_info_details:
+	margin-top: 12px
+	background->
+		$image: Color [0.1, 0.1, 0.1, 0.1]
+	-webkit-box-shadow: #666666 0px 4px 8px
+	-moz-box-shadow: inset #666666 0px 4px 8px
+
+#__error_info_details b:
+	$shadow-top: #333333
+
+#__error_info_debug:
+	border-top->
+		color: #bbbbbb
+		style: solid
+		width: 1px
+	border-bottom->
+		color: #777777
+		style: solid
+		width: 1px
+
+ul.rox-overlay-box-inner li:
+	padding: 0px 8px 8px 0px
+	background->
+		repeat: no-repeat
+		position: left top
+
+ul.rox-overlay-box-inner li, ul.rox-overlay-box-inner li div:
+	color: #333333
+	$shadow-bottom: #999999
+
+ul.rox-overlay-box-inner li div:
+	font-weight: normal
+
+ul.rox-overlay-box-inner li b:
+	display: block
+	color: #dddddd
+	$shadow-top: #555555
+
+.rox-overlay-box h2 button, .rox-overlay-box h2 label:
+	color: #aaaaaa
+	padding: 3px 8px 3px 8px
+	font-weight: normal
+
+.rox-overlay-box button:
+	$border-radius: 6
+	background: none
+	background->
+		$image: Color [0.1, 0.1, 0.1, 0.4]
+	border->
+		color: #555555
+		style: solid
+		width: 1px
+
+.--block-stretch-v:
+	padding-bottom: 32000px
+	margin-bottom: -32000px
+
+#__scriptloader:
+	font-weight: bold
+	color: #fff
+	border->
+		width: 1px
+		color: #666
+		style: solid
+	border-top->
+		style: none
+		width: 0px
+	background->
+		$image: Alpha "gfx/bg_02.png", 0.75, 0.4, 0.4, 0.4
+	position: absolute
+	top: 0px
+	width: 20%
+	left: 40%
+	padding: 0.2em
+	white-space: nowrap
+	text-align: center
+	overflow: hidden
+	$shadow-top: #000000
+	$border-radius: 0 0 8 8

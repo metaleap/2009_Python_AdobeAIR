@@ -1,0 +1,8 @@
+<%!
+import simplejson
+from core import gfx, util
+%><%
+	for k, v in Request.args.items():
+		raise util.RedirectError(_.DynGfx(k, *simplejson.loads('[' + v + ']'), **{ 'rethrow': True }))
+		break
+%>

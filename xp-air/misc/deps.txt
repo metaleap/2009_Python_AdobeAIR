@@ -1,0 +1,25 @@
+ Architecture / Components / Dependencies
+------------------------------------------
+
+
+DATABASE BACKEND:
+CouchDB
+	-	Erlang/OTP
+	-	SpiderMonkey
+
+
+RICH CLIENT FRONTEND:
+Adobe AIR (MetaLeap.air)
+
+
+APPLICATION SERVER:
+-	Cairo
+-	Python
+	-	mako
+	-	werkzeug
+	-	clevercss
+	-	pycairo
+	-	couchdb
+		-	httplib2
+		-	simplejson
+	-	python-cjson

@@ -1,0 +1,22 @@
+<%!
+from core import gfx
+%>
+{
+	options: {
+	},
+	controls: [
+		{
+			id: "tab",
+			type: "core/FlexiBox",
+			options: {
+				domClass: "rox-overlay-box rox-boxshadow rox-maxheight face_UserPromptBox",
+				ctlHeadline: {
+					title: "${_('welcome', _.HostName)}"
+				},
+				ctlPanel: {
+					domClass: "rox-overlay-box-inner rox-autoscroll face_UserPromptPanel"
+				}
+			}
+		}
+	]
+}
